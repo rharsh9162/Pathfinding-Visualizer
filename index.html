@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pathfinding Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="title">Pathfinding Visualizer</div>
+        <div class="controls">
+            <select id="algorithmSelector">
+                <option value="bfs">Breadth-First Search</option>
+                <option value="dfs">Depth-First Search</option>
+                <option value="dijkstra">Dijkstra's Algorithm</option>
+                <option value="astar">A* Search</option>
+            </select>
+            <button onclick="visualize()">Visualize</button>
+            <button onclick="clearBoard()">Clear Board</button>
+            <button onclick="clearWalls()">Clear Walls</button>
+            <button onclick="addBomb()">Add Bomb</button>
+            <button onclick="generateMaze()">Generate Maze</button>
+            <button onclick="clearPathOnly()">Clear Path</button>
+            <select id="speedSelector">
+                <option value="fast">Fast</option>
+                <option value="average" selected>Average</option>
+                <option value="slow">Slow</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="legend">
+        <div><span class="grid-node start">&#10148;</span> Start Node</div>
+        <div><span class="grid-node target">&#9673;</span> Target Node</div>
+        <div><span class="grid-node bomb">&#128163;</span> Bomb Node</div>
+        <div><span class="grid-node wall"></span> Wall Node</div>
+        <div><span class="grid-node visited"></span> Visited Node</div>
+        <div><span class="grid-node path"></span> Shortest Path</div>
+    </div>
+
+
+    <div id="grid-container"></div>
+
+
+    <div id="welcomeModal" class="modal">
+        <div class="modal-content">
+            <h2>👋 Welcome to Pathfinding Visualizer!</h2>
+            <p>This visualizer helps you understand how pathfinding algorithms work by showing their step-by-step
+                exploration on a grid.</p>
+
+            <h3>🚀 How to Use:</h3>
+            <ul>
+                <li>👆 Click and drag to create <strong>walls</strong></li>
+                <li>↔️ Drag the <strong>Start (➤)</strong> or <strong>Target (⍟)</strong> nodes</li>
+                <li>💣 Click "Add Bomb" to change the path</li>
+                <li>⚡ Select an algorithm and click <strong>Visualize</strong></li>
+                <li>🧱 Use "Generate Maze" to auto-create obstacles</li>
+            </ul>
+
+            <h3>🧠 Algorithms Explained:</h3>
+            <ul>
+                <li><strong>BFS:</strong> Explores level-by-level. Finds shortest path (unweighted).</li>
+                <li><strong>DFS:</strong> Explores deep paths first. Not guaranteed to be shortest.</li>
+                <li><strong>Dijkstra:</strong> Guarantees shortest path (weighted).</li>
+                <li><strong>A*:</strong> Smartest — uses heuristics to find fastest path.</li>
+            </ul>
+
+            <button id="closeModal">Got it!</button>
+        </div>
+    </div>
+
+
+    <script type="module" src="main.js"></script>
+</body>
+
+</html>
